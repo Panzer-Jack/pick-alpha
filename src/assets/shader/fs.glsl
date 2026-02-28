@@ -24,16 +24,9 @@ void main() {
 
   float dist = distance(ycbcr.yz, pickYcbcr.yz);
 
-  // // 使用 smoothstep 实现柔和的边缘过渡
-  // float edge = u_tolerance * 0.15;
-  // float alpha = smoothstep(u_tolerance - edge, u_tolerance + edge, dist);
+  // 使用 smoothstep 实现柔和的边缘过渡
+  float edge = u_tolerance * 0.15;
+  float alpha = smoothstep(u_tolerance - edge, u_tolerance + edge, dist);
 
-  // outColor = vec4(rgb, alpha);
-
-
-  if (dist < u_tolerance) {
-    discard;
-  } else {
-    outColor = vec4(rgb, 1.0);
-  }
+  outColor = vec4(rgb, alpha);
 }
